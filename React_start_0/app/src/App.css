@@ -1,0 +1,18 @@
+.person-card {
+    max-width: 15rem;
+    background-color: #fff9c4;
+    border: 1px solid #fff176;
+    border-radius: 0.25rem;
+    padding: 1rem;
+  }
+  
+  .person-card__name {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .person-card__description {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
