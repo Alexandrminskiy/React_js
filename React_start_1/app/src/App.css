@@ -1,0 +1,15 @@
+table, td, th {
+    border: 1px solid black;
+  }
+
+  .ft {
+    color: red;
+  }
+
+  .lt {
+    color: black;
+  }
+
+  .t {
+    color: blue;
+  }
