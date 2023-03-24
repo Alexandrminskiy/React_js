@@ -13,3 +13,9 @@ table, td, th {
   .t {
     color: blue;
   }
+/* ul {
+  list-style-type: none
+} */
+.block1 {
+  color: red;
+}

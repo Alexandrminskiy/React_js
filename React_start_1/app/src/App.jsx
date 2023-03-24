@@ -2,12 +2,19 @@
 import './App.css'
 
 function App() {
-const obj = {name: 'john', surname: 'smit'};
+	const arr = ['a', 'b', 'c', 'd', 'e'];
 
-return (
-
-)
-
+  return (
+    <>
+    <ul>
+    {arr.map(function(el, i){
+      return <p key={i}><li>{el}</li></p>
+    })}
+    </ul>
+    </>
+  )
 }
+
 export default App
-https://code.mu/ru/javascript/framework/react/book/prime/basis/variables-values-inserting/
+
+// https://code.mu/ru/javascript/framework/react/book/prime/basis/objects-array-output/
