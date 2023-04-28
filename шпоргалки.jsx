@@ -519,3 +519,5 @@ function App() {
 		<button onClick={() => setNotes(notes.map(note => note.id === data.id ? data : note))}>edit</button> {/* Изменение */}
 	</div >
 }
+
+// 123
