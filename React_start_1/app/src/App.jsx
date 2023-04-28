@@ -3,26 +3,53 @@ import './App.css'
 // import {nanoid} from 'nanoid'
 import React, { useState } from 'react';
 
-function App(){
-  const [val1, setVal1] = useState()
-  // const [val2, setVal2] = useState()
-  const [res1, setRes1] = useState()
-  // const [res2, setRes2] = useState()
-  
+const initProds = [
+	{id: id(), name: 'prod1', catg: 'catg1', cost: 100},
+	{id: id(), name: 'prod2', catg: 'catg2', cost: 200},
+	{id: id(), name: 'prod3', catg: 'catg3', cost: 300},
+];
 
-function oN(e){
-  console.log(e.target.value);
+// const initNotes = [
+// 	{
+// 		id: 'GYi9G_uC4gBF1e2SixDvu',
+// 		prop1: 'value11',
+// 		prop2: 'value12',
+// 		prop3: 'value13',
+// 	},
+// 	{
+// 		id: 'IWSpfBPSV3SXgRF87uO74',
+// 		prop1: 'value21',
+// 		prop2: 'value22',
+// 		prop3: 'value23',
+// 	},
+// 	{
+// 		id: 'JAmjRlfQT8rLTm5tG2m1L',
+// 		prop1: 'value31',
+// 		prop2: 'value32',
+// 		prop3: 'value33',
+// 	},
+// ];
+
+function App() {
+	const [notes, setNotes] = useState(initNotes)
+
+	function remItem(id) {
+		setNotes(notes.filter(not => not.id !== id))
+	}
+
+	const result = notes.map(not => {
+		return <p key={not.id}>
+			<span>{not.prop1}{<br />}</span>
+			<span>{not.prop2}{<br />}</span>
+			<span>{not.prop3}{<br />}</span>
+			<button onClick={() => remItem(not.id)}>remove</button>
+		</p>
+	})
+	return <div>
+		{result}
+	</div>
 }
 
-  return <>
- 
-  <input val1={val1} onChange={e => setVal1(e.target.value)}/>
-  <button onClick={()=> setRes1(val1)} onChange={oN}>btn</button>
-  <p>: {res1}</p>
-  </>
-}
+
 
 export default App
-
-// https://code.mu/ru/javascript/framework/react/book/prime/basis/objects-array-output/
-// https://code.mu/ru/javascript/framework/react/book/prime/states/handling-form-data/
