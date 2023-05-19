@@ -1,0 +1,8 @@
+import / export
+
+export const TEST = ...;
+export { TEST, nameFunc }
+import { TEST, nameFunc } from './......'
+
+export default TEST;
+import anyName from './.....'

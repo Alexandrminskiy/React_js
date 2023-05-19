@@ -326,16 +326,16 @@ function App() {
   const [editNum, setEditNum] = useState(null)
 
   const result = notes.map((note, i) => {
-     return <p key={i} onClick={() => setEditNum(i)}>{note}</p>
+    return <p key={i} onClick={() => setEditNum(i)}>{note}</p>
   })
 
   function changeItem(event) {
-     setNotes([...notes.slice(0, editNum), event.target.value, ...notes.slice(editNum + 1)])
+    setNotes([...notes.slice(0, editNum), event.target.value, ...notes.slice(editNum + 1)])
   }
 
   return <>
-     {result}
-     <input value={editNum ? notes[editNum] : ''} onChange={changeItem} />
+    {result}
+    <input value={editNum ? notes[editNum] : ''} onChange={changeItem} />
   </>
 
 }
@@ -343,181 +343,221 @@ function App() {
 // Универсальная форма для изменения массива в React
 // 1
 function App() {
-	const [notes, setNotes] = useState([1, 2, 3, 4, 5]);
-	const [editNum, setEditNum] = useState(null)
-	const [value, setValue] = useState('')
+  const [notes, setNotes] = useState([1, 2, 3, 4, 5]);
+  const [editNum, setEditNum] = useState(null)
+  const [value, setValue] = useState('')
 
-	const result = notes.map((note, i) => {
-		return <p key={i} onClick={() => setEditNum(i)}>{note}</p>
-	})
+  const result = notes.map((note, i) => {
+    return <p key={i} onClick={() => setEditNum(i)}>{note}</p>
+  })
 
-	function changeItem(event) {
-		setNotes([...notes.slice(0, editNum),
-		event.target.value, ...notes.slice(editNum + 1)])
-	}
-	function stopEdit(event) {
-		setEditNum(null)
-	}
-	function changeValue(event) {
-		setValue(event.target.value)
-	}
-function addItem(event){
-	setNotes([...notes,value])
-}
-let input;
-if (editNum){
-	input=<input
-	value={notes[editNum]}
-	onChange={changeItem}
-	onBlur={stopEdit}
-	/>
-}
-else {
-	input = <input
-	value={value}
-	onChange={changeValue}
-	onBlur={addItem}
-	/>
-}
-return <div>
-	{result}
-	{input}
-</div>
+  function changeItem(event) {
+    setNotes([...notes.slice(0, editNum),
+    event.target.value, ...notes.slice(editNum + 1)])
+  }
+  function stopEdit(event) {
+    setEditNum(null)
+  }
+  function changeValue(event) {
+    setValue(event.target.value)
+  }
+  function addItem(event) {
+    setNotes([...notes, value])
+  }
+  let input;
+  if (editNum) {
+    input = <input
+      value={notes[editNum]}
+      onChange={changeItem}
+      onBlur={stopEdit}
+    />
+  }
+  else {
+    input = <input
+      value={value}
+      onChange={changeValue}
+      onBlur={addItem}
+    />
+  }
+  return <div>
+    {result}
+    {input}
+  </div>
 }
 // 2
 function App() {
-	const [notes, setNotes] = useState([1, 2, 3, 4, 5]);
-	const [editNum, setEditNum] = useState(null);
+  const [notes, setNotes] = useState([1, 2, 3, 4, 5]);
+  const [editNum, setEditNum] = useState(null);
 
-	const result = notes.map((note, index) => {
-		return <p key={index} onClick={() => startEdit(index)}>{note}</p>;
-	});
+  const result = notes.map((note, index) => {
+    return <p key={index} onClick={() => startEdit(index)}>{note}</p>;
+  });
 
-	function startEdit(index) {
-		setEditNum(index);
-	}
-	function editItem(event) {
-		setNotes([...notes.slice(0, editNum),
-		event.target.value, ...notes.slice(editNum + 1)]);
-	}
-	function createItem() {
-		if (!editNum) {
-			const res = [...notes, ''];
-			setNotes(res);
-			setEditNum(res.length - 1);
-		}
-	}
-	function stopEdit() {
-		setEditNum(null);
-	}
+  function startEdit(index) {
+    setEditNum(index);
+  }
+  function editItem(event) {
+    setNotes([...notes.slice(0, editNum),
+    event.target.value, ...notes.slice(editNum + 1)]);
+  }
+  function createItem() {
+    if (!editNum) {
+      const res = [...notes, ''];
+      setNotes(res);
+      setEditNum(res.length - 1);
+    }
+  }
+  function stopEdit() {
+    setEditNum(null);
+  }
 
-	return <div>
-		{result}
+  return <div>
+    {result}
 
-		<input
-			value={editNum ? notes[editNum] : ''}
-			onChange={editItem}
-			onFocus={createItem}
-			onBlur={stopEdit}
-		/>
-	</div>;
+    <input
+      value={editNum ? notes[editNum] : ''}
+      onChange={editItem}
+      onFocus={createItem}
+      onBlur={stopEdit}
+    />
+  </div>;
 }
 // Реактивность объектов в React
 function App() {
-	const [obj, setObj] = useState({
-		prop1: 'value1',
-		prop4: 'value4',
-	})
-	function pro4() {
-		const copy = Object.assign({}, obj);
-		copy.prop4 = '!!!@';
-		setObj(copy);
-	}
+  const [obj, setObj] = useState({
+    prop1: 'value1',
+    prop4: 'value4',
+  })
+  function pro4() {
+    const copy = Object.assign({}, obj);
+    copy.prop4 = '!!!@';
+    setObj(copy);
+  }
 
-	return <div>
-		<button onClick={() => setObj({ ...obj, ...{ prop1: '!' } })}>btn1</button><span>{obj.prop1}</span><br />
-		<button onClick={pro4}>btn4</button><span>{obj.prop4}</span><br />
-	</div>
+  return <div>
+    <button onClick={() => setObj({ ...obj, ...{ prop1: '!' } })}>btn1</button><span>{obj.prop1}</span><br />
+    <button onClick={pro4}>btn4</button><span>{obj.prop4}</span><br />
+  </div>
 }
 // Привязка инпутов к объекту в React
 const initDate = {
-	year: 2025,
-	month: 12,
-	day: 31,
+  year: 2025,
+  month: 12,
+  day: 31,
 }
 function App() {
-	const [obj, setObj] = useState(initDate)
+  const [obj, setObj] = useState(initDate)
 
-	function handleChange(prop, event) {
-		setObj({ ...obj, ...{ [prop]: event.target.value } })
-	}
+  function handleChange(prop, event) {
+    setObj({ ...obj, ...{ [prop]: event.target.value } })
+  }
 
-	return <div>
-		<input value={obj.year} onChange={event => handleChange('year', event)} />
-		<input value={obj.month} onChange={event => handleChange('month', event)} />
-		<input value={obj.day} onChange={event => handleChange('day', event)} />
-		<br />
-		{obj.year}-{obj.month}-{obj.day}
-	</div>
+  return <div>
+    <input value={obj.year} onChange={event => handleChange('year', event)} />
+    <input value={obj.month} onChange={event => handleChange('month', event)} />
+    <input value={obj.day} onChange={event => handleChange('day', event)} />
+    <br />
+    {obj.year}-{obj.month}-{obj.day}
+  </div>
 }
 
 // Форма для добавления в массив объектов в React
 
 // Реактивность массива объектов в React
 const initNotes = [
-	{
-		id: 'GYi9G_uC4gBF1e2SixDvu',
-		prop1: 'value11',
-		prop2: 'value12',
-		prop3: 'value13',
-	},
-	{
-		id: 'IWSpfBPSV3SXgRF87uO74',
-		prop1: 'value21',
-		prop2: 'value22',
-		prop3: 'value23',
-	},
-	{
-		id: 'JAmjRlfQT8rLTm5tG2m1L',
-		prop1: 'value31',
-		prop2: 'value32',
-		prop3: 'value33',
-	},
+  {
+    id: 'GYi9G_uC4gBF1e2SixDvu',
+    prop1: 'value11',
+    prop2: 'value12',
+    prop3: 'value13',
+  },
+  {
+    id: 'IWSpfBPSV3SXgRF87uO74',
+    prop1: 'value21',
+    prop2: 'value22',
+    prop3: 'value23',
+  },
+  {
+    id: 'JAmjRlfQT8rLTm5tG2m1L',
+    prop1: 'value31',
+    prop2: 'value32',
+    prop3: 'value33',
+  },
 ];
 const newElem = {
-	id: 'GMNCZnFT4rbBP6cirA0Ha',
-	prop1: 'value41',
-	prop2: 'value42',
-	prop3: 'value43',
+  id: 'GMNCZnFT4rbBP6cirA0Ha',
+  prop1: 'value41',
+  prop2: 'value42',
+  prop3: 'value43',
 };
 const data = {
-	id: 'IWSpfBPSV3SXgRF87uO74',
-	prop1: 'value21 !',
-	prop2: 'value22 !',
-	prop3: 'value23 !',
+  id: 'IWSpfBPSV3SXgRF87uO74',
+  prop1: 'value21 !',
+  prop2: 'value22 !',
+  prop3: 'value23 !',
 };
 const id = 'JAmjRlfQT8rLTm5tG2m1L';
 const prop = 'prop2';
 function App() {
-	const [notes, setNotes] = useState(initNotes);
-	const id = 'IWSpfBPSV3SXgRF87uO74';
-	const result = notes.map(note => {
-		return <p key={note.id}>
-			<span>{note.prop1}</span>
-			<span>{note.prop2}</span>
-			<span>{note.prop3}</span>
-		</p>
-	})
+  const [notes, setNotes] = useState(initNotes);
+  const id = 'IWSpfBPSV3SXgRF87uO74';
+  const result = notes.map(note => {
+    return <p key={note.id}>
+      <span>{note.prop1}</span>
+      <span>{note.prop2}</span>
+      <span>{note.prop3}</span>
+    </p>
+  })
 
-	// setNotes(notes.filter(note => note.id !== id));
+  // setNotes(notes.filter(note => note.id !== id));
 
-	return <div>
+  return <div>
 
-		{result}
-		<button onClick={() => setNotes(notes.filter(note => note.id !== id))}>del</button> {/* Удаление */}
-		<button onClick={() => setNotes([...notes, newElem])}>add</button> {/* Добавление */}
-		<button onClick={() => setNotes(notes.map(note => note.id === data.id ? data : note))}>edit</button> {/* Изменение */}
-	</div >
+    {result}
+    <button onClick={() => setNotes(notes.filter(note => note.id !== id))}>del</button> {/* Удаление */}
+    <button onClick={() => setNotes([...notes, newElem])}>add</button> {/* Добавление */}
+    <button onClick={() => setNotes(notes.map(note => note.id === data.id ? data : note))}>edit</button> {/* Изменение */}
+  </div >
 }
 
-// 123
+// Перебор объект масcивов через for
+const App = () => {
+  const array = [{ hello: 'world1' }, { hello: 'world2' }];
+
+  const arrReactElem = [];
+
+  for (let i = 0; i < array.length; i++) {
+    const obj = array[i];
+    arrReactElem.push(
+      <div>{obj.hello}</div>
+    )
+  }
+
+  console.log(array);
+  console.log(arrReactElem);
+
+  return (
+
+    <div>
+      {arrReactElem}
+    </div>
+  )
+};
+
+// Перебо оъектов масcивов через forEach
+{const arrReactElem = [];
+  array.forEach((obj)=>{
+      arrReactElem.push(
+          <p>{obj.hello}</p>
+      );
+  });}
+
+  // Перебор объектов масcивов через map
+  return (
+    <div>{array.map((obj)=>{
+        return(
+        <p>{obj.hello}</p>
+        );
+        })}
+    </div>
+)

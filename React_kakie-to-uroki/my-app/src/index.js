@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-import { TEST1, TEST2 } from './test'
-// console.log(TEST1, TEST2);
+import App from './App.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    123
+    <App />
   </React.StrictMode>
 );
