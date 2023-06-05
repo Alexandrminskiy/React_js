@@ -28,5 +28,7 @@ const cart = {
         price: 1
     }],
 };
-console.log(cart.money.discount.hasDiscount)
+
+cart.name = 'Антон'
+console.log(cart)
 
