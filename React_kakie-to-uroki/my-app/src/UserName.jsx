@@ -1,10 +1,9 @@
-import React from "react"
-const UserName = () => {
-    return (
-        <div>
-            test
-        </div>
-    )
-}
+import React from "react";
 
-export default UserName
+const UserName = (props) => {
+    return (props.age > 20 ?
+        (<p>{props.userName}<button>Изменить имя</button></p>) : (<p> {props.userName} {props.userSurname}</p>)
+    );
+};
+
+export default UserName;

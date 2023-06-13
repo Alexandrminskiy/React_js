@@ -1,14 +1,7 @@
-.Hello {
-    background: #312e2e;
-    color: #ffffff;
+.bad {
+    background-color: red;
 }
 
 .good {
-    color: white;
-    background: rgb(0, 200, 33);
-}
-
-.bad {
-    color: white;
-    background: rgb(255, 0, 0);
+    background-color: green;
 }
